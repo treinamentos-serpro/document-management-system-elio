@@ -1,0 +1,495 @@
+:root {
+  font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  color: #172521;
+  background: #f1f3ee;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --ink: #172521;
+  --muted: #69756f;
+  --line: #d8ded8;
+  --paper: #fbfcf9;
+  --forest: #174b3c;
+  --lime: #c9e28a;
+  --warning: #a33b2c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f1f3ee;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0,
+    transparent 11px,
+    rgb(23 75 60 / 2%) 12px,
+    transparent 13px
+  );
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.workspace {
+  width: min(100% - 48px, 1040px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+.topbar {
+  display: flex;
+  min-height: 76px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+
+.wordmark small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.wordmark-icon {
+  display: grid;
+  width: 34px;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 4px;
+  background: var(--forest);
+  color: #fff;
+  font-family: Georgia, serif;
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.user-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.user-field input {
+  width: 172px;
+  min-height: 34px;
+  padding: 6px 9px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  outline-color: var(--forest);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.page-heading {
+  display: flex;
+  min-height: 210px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+
+.eyebrow,
+.section-index,
+.page-footer {
+  color: var(--forest);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.eyebrow {
+  margin: 0 0 11px;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 8px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.heading-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.document-count {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  color: var(--forest);
+}
+
+.document-count span {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 40px;
+}
+
+.document-count small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.upload-section,
+.documents-section {
+  padding: 28px 0 31px;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 18px;
+}
+
+.section-title h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 650;
+}
+
+.section-index {
+  color: #88948d;
+  font-size: 9px;
+}
+
+.upload-form {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.file-picker {
+  display: flex;
+  min-width: 0;
+  min-height: 70px;
+  flex: 1;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border: 1px dashed #aebbb1;
+  border-radius: 4px;
+  background: rgb(251 252 249 / 78%);
+  cursor: pointer;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.file-picker:hover {
+  border-color: var(--forest);
+  background: #fff;
+}
+
+.file-picker input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.file-symbol {
+  display: grid;
+  width: 36px;
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 3px;
+  background: #e7eee4;
+  color: var(--forest);
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.file-label {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+}
+
+.file-label strong {
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-label small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.primary-button {
+  display: inline-flex;
+  min-width: 158px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 0 17px;
+  border: 0;
+  border-radius: 3px;
+  background: var(--forest);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 650;
+  transition: background-color 160ms ease;
+}
+
+.primary-button:hover:not(:disabled) {
+  background: #103c30;
+}
+
+.primary-button span {
+  color: var(--lime);
+  font-size: 18px;
+}
+
+.documents-title {
+  margin-bottom: 16px;
+}
+
+.refresh-button {
+  display: grid;
+  width: 32px;
+  aspect-ratio: 1;
+  place-items: center;
+  margin-left: auto;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--forest);
+  font-size: 19px;
+}
+
+.refresh-button:hover {
+  border-color: var(--forest);
+}
+
+.document-list {
+  border-top: 1px solid var(--line);
+}
+
+.document-row {
+  display: flex;
+  min-height: 76px;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid var(--line);
+  animation: row-enter 280ms ease both;
+}
+
+.document-mark {
+  display: grid;
+  width: 40px;
+  height: 44px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid #cbd6ca;
+  border-radius: 2px;
+  background: #e6ece4;
+  color: var(--forest);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.document-details {
+  min-width: 0;
+  flex: 1;
+}
+
+.document-details h3 {
+  overflow: hidden;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.document-details p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.document-details p span {
+  padding: 0 4px;
+  color: #a1aaa3;
+}
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--forest);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.download-button:hover:not(:disabled) {
+  border-color: var(--line);
+  background: var(--paper);
+}
+
+.download-button span {
+  font-size: 16px;
+}
+
+.list-state {
+  margin: 0;
+  padding: 25px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.feedback {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border-left: 3px solid;
+  background: var(--paper);
+  font-size: 12px;
+}
+
+.error-message {
+  border-color: var(--warning);
+  color: var(--warning);
+}
+
+.success-message {
+  border-color: var(--forest);
+  color: var(--forest);
+}
+
+.page-footer {
+  padding-top: 21px;
+  color: #7d8981;
+  font-size: 9px;
+}
+
+.page-footer span {
+  padding: 0 5px;
+  color: #b0bab1;
+}
+
+@keyframes row-enter {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .workspace {
+    width: min(100% - 32px, 1040px);
+  }
+
+  .topbar {
+    min-height: 68px;
+  }
+
+  .user-field {
+    gap: 6px;
+    font-size: 0;
+  }
+
+  .user-field input {
+    width: min(43vw, 172px);
+  }
+
+  .page-heading {
+    min-height: 176px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .document-count {
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .document-count span {
+    font-size: 34px;
+  }
+
+  .upload-form {
+    flex-direction: column;
+  }
+
+  .primary-button {
+    min-height: 46px;
+  }
+
+  .document-row {
+    gap: 10px;
+  }
+
+  .document-mark {
+    width: 34px;
+    height: 38px;
+  }
+
+  .download-button {
+    gap: 5px;
+    padding: 7px 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
